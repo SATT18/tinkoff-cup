@@ -5,7 +5,7 @@ import sassDts from 'vite-plugin-sass-dts'
 import path from 'path'
 
 export default defineConfig({
-  base: 'tinkoff-cup',
+  base: '/tinkoff-cup',
   css: {
     preprocessorOptions: {
       scss: {
