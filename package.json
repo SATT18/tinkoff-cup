@@ -12,9 +12,11 @@
     "build": "node load-schema.js && npm run generate-swager-client && tsc && vite build",
     "preview": "vite preview",
     "generate-swager-client": "orval --config orval.config.cjs",
+    "ts:build": "tsc --noEmit",
     "format:prettier": "prettier --write \"src/**/*.{ts,tsx}\" package.json",
     "format:eslint": "eslint --color --fix --cache \"src/**/*.{ts,tsx}\"",
-    "format": "npm run format:prettier && npm run format:eslint"
+    "format": "npm run format:prettier && npm run format:eslint",
+    "lint": "eslint ./src"
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",

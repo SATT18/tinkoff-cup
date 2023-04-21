@@ -36,6 +36,10 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
+      - name: lint check
+        run: npm run lint
+      - name: compile ts
+        run: npm run ts:build
       - name: Build
         run: npm run build
       - name: Setup Pages
