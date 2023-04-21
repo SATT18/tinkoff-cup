@@ -30,7 +30,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     >
       <RecoilRoot>
         <QueryClientProvider client={queryClient}>
-          <BrowserRouter basename="/app">
+          <BrowserRouter basename="/">
             <Routes />
           </BrowserRouter>
         </QueryClientProvider>
