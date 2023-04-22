@@ -56,10 +56,18 @@ export const AddCategory = () => {
           onFinish={handleSubmit}
           wrapperCol={{ span: 14 }}
         >
-          <Form.Item label="Название" name="name">
+          <Form.Item
+            label="Название"
+            name="name"
+            rules={[{ required: true, message: 'Обязательное поле' }]}
+          >
             <Input type="text" />
           </Form.Item>
-          <Form.Item label="Цвет" name="color">
+          <Form.Item
+            label="Цвет"
+            name="color"
+            rules={[{ required: true, message: 'Обязательное поле' }]}
+          >
             <HexColorPicker
               style={{
                 width: '100%',

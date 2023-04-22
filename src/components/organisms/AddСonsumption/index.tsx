@@ -65,13 +65,25 @@ export const AddConsumption = () => {
           onFinish={handleSubmit}
           wrapperCol={{ span: 14 }}
         >
-          <Form.Item label="Название расхода" name="name">
+          <Form.Item
+            label="Название расхода"
+            name="name"
+            rules={[{ required: true, message: 'Обязательное поле' }]}
+          >
             <Input type="text" />
           </Form.Item>
-          <Form.Item label="Сумма" name="amount">
+          <Form.Item
+            label="Сумма"
+            name="amount"
+            rules={[{ required: true, message: 'Обязательное поле' }]}
+          >
             <Input type="number" />
           </Form.Item>
-          <Form.Item label="Категория" name="category">
+          <Form.Item
+            label="Категория"
+            name="category"
+            rules={[{ required: true, message: 'Обязательное поле' }]}
+          >
             <Select
               labelInValue
               filterOption={(input, option) =>
@@ -85,7 +97,11 @@ export const AddConsumption = () => {
               options={categoriesOptions}
             />
           </Form.Item>
-          <Form.Item label="Дата" name="date">
+          <Form.Item
+            label="Дата"
+            name="date"
+            rules={[{ required: true, message: 'Обязательное поле' }]}
+          >
             <DatePicker />
           </Form.Item>
           <Form.Item wrapperCol={{ offset, span: 16 }}>
