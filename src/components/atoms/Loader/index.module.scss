@@ -28,7 +28,7 @@
   border-radius: 50%;
 
   animation: loader 1.2s linear infinite;
-  border-color: #535bf2 transparent;
+  border-color: var(--colorPrimary) transparent;
 }
 
 @keyframes loader {

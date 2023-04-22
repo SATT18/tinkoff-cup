@@ -9,5 +9,10 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --color-primary: #2355d7
+  --colorPrimary: #ffdd2d;
+  --colorWarning: #fab619;
+  --colorError: #f52222;
+  --colorInfo: #428bf9;
+  --colorSuccess: #00b92d;
+  --colorTextBase: #000000cc
 }

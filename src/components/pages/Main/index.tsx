@@ -1,8 +1,11 @@
-import React from 'react'
+import { Button, Form, Input, Modal } from 'antd'
+import { PlusOutlined } from '@ant-design/icons'
+import MainTemplate from '../../templates/MainTemplate'
+import React, { useState } from 'react'
 import css from './index.module.scss'
 
 function Main() {
-  return <h1 className={css.react}>Hello world</h1>
+  return <MainTemplate></MainTemplate>
 }
 
 export default Main

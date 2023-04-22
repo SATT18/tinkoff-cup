@@ -4,6 +4,8 @@ import { useLocation } from 'react-router-dom'
 
 const NotFound = lazy(() => import('../../components/pages/NotFound'))
 const Main = lazy(() => import('../../components/pages/Main'))
+const Dashboard = lazy(() => import('../../components/pages/Dashboard'))
+const Consumptions = lazy(() => import('../../components/pages/Consumptions'))
 
 export type Routes = {
   /**
@@ -35,6 +37,20 @@ export const ROUTES: Routes[] = [
     title: 'Главная | Tinkoff',
     accessRules: { roles: [] },
     component: Main,
+  },
+  {
+    id: 'dashboard',
+    path: '/dashboard',
+    title: 'Главная | Tinkoff',
+    accessRules: { roles: [] },
+    component: Dashboard,
+  },
+  {
+    id: 'consumptions',
+    path: '/consumptions',
+    title: 'Главная | Tinkoff',
+    accessRules: { roles: [] },
+    component: Consumptions,
   },
   {
     id: 'notFound',
