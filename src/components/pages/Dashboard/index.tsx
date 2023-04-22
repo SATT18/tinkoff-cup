@@ -1,7 +1,7 @@
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js'
+import { ConsumptionsFilter } from '../../organisms/ConsumptionsFilter'
 import { DashboardState } from '../../State/dashboard'
 import { Pie } from 'react-chartjs-2'
-import { Typography } from 'antd'
 import { useRecoilValue } from 'recoil'
 import MainTemplate from '../../templates/MainTemplate'
 import React from 'react'
@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   return (
     <MainTemplate title="Сводка">
-      <Typography.Title level={2}>За все время</Typography.Title>
+      <ConsumptionsFilter />
       <Pie data={dashBoardData} />
     </MainTemplate>
   )

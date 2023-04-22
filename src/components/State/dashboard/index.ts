@@ -1,12 +1,16 @@
 import { selector } from 'recoil'
 import { CategoriesState } from '../categories'
-import { ConsumptionsState } from '../сonsumptions'
+import {
+  ConsumptionsFilterState,
+  ConsumptionsState,
+  ConsumptionsStateFiltered,
+} from '../сonsumptions'
 
 export const DashboardState = selector({
   key: 'dashboard',
   get: ({ get }) => {
     const categories = get(CategoriesState)
-    const consumptions = get(ConsumptionsState)
+    const consumptions = get(ConsumptionsStateFiltered)
     const spendByCategories = categories.map((category) => {
       return consumptions.reduce(
         (acc, consumption) =>

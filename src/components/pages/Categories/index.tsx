@@ -9,7 +9,7 @@ const Consumptions = () => {
   const consumptions = useRecoilValue(CategoriesState)
 
   return (
-    <MainTemplate title="Катаегории трат">
+    <MainTemplate title="Категории трат">
       <List
         dataSource={consumptions}
         itemLayout="horizontal"
