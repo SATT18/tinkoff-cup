@@ -1,6 +1,11 @@
 import { AddConsumption } from '../../organisms/AddСonsumption'
 import { ConsumptionsState } from '../../State/сonsumptions'
 import { List } from 'antd'
+import { formatAmount } from '../../../lib/formatAmount'
+import {
+  formatDate,
+  formatDateToTimeDate,
+} from '../../../lib/formatDateToTimeDate'
 import { useRecoilValue } from 'recoil'
 import MainTemplate from '../../templates/MainTemplate'
 import React from 'react'
@@ -17,8 +22,8 @@ const Consumptions = () => {
         renderItem={(item, index) => (
           <List.Item>
             <List.Item.Meta description={item.category} title={item.name} />
-            <div>{item.amount}</div>
-            <div>{item.date}</div>
+            <div>{formatAmount(+item.amount)}</div>
+            <div style={{ marginLeft: 8 }}>{formatDate(item.date)}</div>
           </List.Item>
         )}
       />

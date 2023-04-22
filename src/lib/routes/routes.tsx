@@ -1,9 +1,7 @@
 import { AccessRules } from '../auth'
-import { FC, LazyExoticComponent, lazy, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-
+import { Navigate, useLocation } from 'react-router-dom'
+import React, { FC, LazyExoticComponent, lazy, useEffect } from 'react'
 const NotFound = lazy(() => import('../../components/pages/NotFound'))
-const Main = lazy(() => import('../../components/pages/Main'))
 const Dashboard = lazy(() => import('../../components/pages/Dashboard'))
 const Consumptions = lazy(() => import('../../components/pages/Consumptions'))
 
@@ -36,7 +34,7 @@ export const ROUTES: Routes[] = [
     path: '/',
     title: 'Главная | Tinkoff',
     accessRules: { roles: [] },
-    component: Main,
+    component: () => <Navigate to="/consumptions" />,
   },
   {
     id: 'dashboard',
