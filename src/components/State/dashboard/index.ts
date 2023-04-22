@@ -1,10 +1,6 @@
 import { selector } from 'recoil'
 import { CategoriesState } from '../categories'
-import {
-  ConsumptionsFilterState,
-  ConsumptionsState,
-  ConsumptionsStateFiltered,
-} from '../сonsumptions'
+import { ConsumptionsStateFiltered } from '../сonsumptions'
 
 export const DashboardState = selector({
   key: 'dashboard',

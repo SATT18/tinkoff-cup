@@ -70,3 +70,12 @@ export const ConsumptionsStateFiltered = selector({
     return output
   },
 })
+
+export const ConsumptionsFiltersSpend = selector({
+  key: 'consumptionsFiltersSpend',
+  get: ({ get }) => {
+    const consumptions = get(ConsumptionsStateFiltered)
+
+    return consumptions.reduce((acc, el) => acc + Number(el.amount), 0)
+  },
+})

@@ -2,6 +2,7 @@ import { AddConsumption } from '../../organisms/AddСonsumption'
 import { ConsumptionsFilter } from '../../organisms/ConsumptionsFilter'
 import { ConsumptionsStateFiltered } from '../../State/сonsumptions'
 import { List } from 'antd'
+import { TotalSpend } from '../../molecules/TotalSpend'
 import { formatAmount } from '../../../lib/formatAmount'
 import { formatDate } from '../../../lib/formatDateToTimeDate'
 import { useRecoilValue } from 'recoil'
@@ -14,6 +15,8 @@ const Consumptions = () => {
   return (
     <MainTemplate title="Ваши траты">
       <ConsumptionsFilter />
+      <TotalSpend />
+
       <List
         dataSource={consumptions}
         renderItem={(item, index) => (
