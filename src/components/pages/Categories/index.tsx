@@ -13,7 +13,27 @@ const Consumptions = () => {
       <List
         dataSource={consumptions}
         itemLayout="horizontal"
-        renderItem={(item) => <List.Item key={item.id}>{item.name}</List.Item>}
+        renderItem={(item) => (
+          <List.Item key={item.id}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}
+            >
+              <div>{item.name}</div>
+              <div
+                style={{
+                  width: 20,
+                  height: 20,
+                  backgroundColor: item.color,
+                  borderRadius: '50%',
+                }}
+              />
+            </div>
+          </List.Item>
+        )}
       />
       <AddCategory />
     </MainTemplate>

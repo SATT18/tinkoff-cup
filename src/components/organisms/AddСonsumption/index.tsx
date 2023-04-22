@@ -1,5 +1,5 @@
 import { Button, DatePicker, Form, Input, Modal, Select } from 'antd'
-import { CategoriesOptions } from '../../State/categories'
+import { CategoriesOptions, CategoriesState } from '../../State/categories'
 import { ConsumptionsState } from '../../State/сonsumptions'
 import { Dayjs } from 'dayjs'
 import { PlusOutlined } from '@ant-design/icons'
@@ -19,19 +19,26 @@ type FormValues = {
 export const AddConsumption = () => {
   const [isAddModalOpen, setModalOpen] = useState(false)
 
+  const categories = useRecoilValue(CategoriesState)
   const categoriesOptions = useRecoilValue(CategoriesOptions)
   const setConsumptionsState = useSetRecoilState(ConsumptionsState)
   const handleSubmit = (values: FormValues) => {
-    setConsumptionsState((prev) => [
-      ...prev,
-      {
-        id: v4(),
-        name: values.name,
-        category: values.category.value,
-        amount: values.amount,
-        date: values.date.toISOString(),
-      },
-    ])
+    setConsumptionsState((prev) => {
+      const category = categories.find((el) => el.id === values.category.value)
+
+      return category
+        ? [
+            ...prev,
+            {
+              id: v4(),
+              name: values.name,
+              category,
+              amount: values.amount,
+              date: values.date.toISOString(),
+            },
+          ]
+        : prev
+    })
     setModalOpen(false)
   }
 
@@ -45,6 +52,7 @@ export const AddConsumption = () => {
         <PlusOutlined /> Добавть расход
       </Button>
       <Modal
+        destroyOnClose
         footer={null}
         onCancel={() => setModalOpen(false)}
         open={isAddModalOpen}

@@ -1,10 +1,10 @@
 import { AccessRules } from '../auth'
 import { Navigate, useLocation } from 'react-router-dom'
-import React, { FC, LazyExoticComponent, lazy, useEffect } from 'react'
-const NotFound = lazy(() => import('../../components/pages/NotFound'))
-const Dashboard = lazy(() => import('../../components/pages/Dashboard'))
-const Consumptions = lazy(() => import('../../components/pages/Consumptions'))
-const Categories = lazy(() => import('../../components/pages/Categories'))
+import Categories from '../../components/pages/Categories'
+import Consumptions from '../../components/pages/Consumptions'
+import Dashboard from '../../components/pages/Dashboard'
+import NotFound from '../../components/pages/NotFound'
+import React, { FC, LazyExoticComponent, useEffect } from 'react'
 
 export type Routes = {
   /**

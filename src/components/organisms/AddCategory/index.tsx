@@ -1,6 +1,7 @@
 import { Button, Form, Input, Modal } from 'antd'
 import { CategoriesState } from '../../State/categories'
 import { Dayjs } from 'dayjs'
+import { HexColorPicker } from 'react-colorful'
 import { PlusOutlined } from '@ant-design/icons'
 import { useSetRecoilState } from 'recoil'
 import { v4 } from 'uuid'
@@ -14,6 +15,7 @@ type FormValues = {
   amount: number
   category: { label: string; value: string }
   date: Dayjs
+  color: string
 }
 export const AddCategory = () => {
   const [isAddModalOpen, setModalOpen] = useState(false)
@@ -23,6 +25,7 @@ export const AddCategory = () => {
       ...prev,
       {
         id: v4(),
+        color: values.color,
         name: values.name,
         value: v4(),
       },
@@ -40,6 +43,7 @@ export const AddCategory = () => {
         <PlusOutlined /> Добавить категорию
       </Button>
       <Modal
+        destroyOnClose
         footer={null}
         onCancel={() => setModalOpen(false)}
         open={isAddModalOpen}
@@ -54,6 +58,13 @@ export const AddCategory = () => {
         >
           <Form.Item label="Название" name="name">
             <Input type="text" />
+          </Form.Item>
+          <Form.Item label="Цвет" name="color">
+            <HexColorPicker
+              style={{
+                width: '100%',
+              }}
+            />
           </Form.Item>
           <Form.Item wrapperCol={{ offset, span: 16 }}>
             <Button
