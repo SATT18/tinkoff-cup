@@ -43,8 +43,6 @@ export const DashboardLineState = selector({
       labels.push(formatDate(dayjs().add(-i, 'day').toISOString()))
     }
 
-    console.log('labels', labels)
-
     const data = labels.map((date) =>
       consumptions.reduce(
         (acc, el) =>
