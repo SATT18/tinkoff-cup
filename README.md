@@ -3,6 +3,10 @@
 ## Available Scripts
 
 In the project directory, you can run:
+### `npm ci --legacy-peer-deps`
+
+to install project dependencies
+
 
 ### `npm start`
 
