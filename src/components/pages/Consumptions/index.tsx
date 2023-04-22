@@ -1,4 +1,3 @@
-import { AddCategory } from '../../organisms/AddCategory'
 import { AddConsumption } from '../../organisms/AddСonsumption'
 import { ConsumptionsState } from '../../State/сonsumptions'
 import { List } from 'antd'
