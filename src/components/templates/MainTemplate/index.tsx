@@ -8,7 +8,7 @@ type Props = {
   title?: string
 }
 enum Tabs {
-  History = 'HISTORY',
+  Categories = 'CATEGORIES',
   Dashboard = 'DASHBOARD',
   Consumptions = 'CONSUMPTIONS',
 }
@@ -30,7 +30,7 @@ const MainTemplate: FC<Props> = ({ children, title }) => {
       >
         <Radio.Button value={Tabs.Dashboard}>Сводка</Radio.Button>
         <Radio.Button value={Tabs.Consumptions}>Операции</Radio.Button>
-        {/*<Radio.Button value={Tabs.History}>История</Radio.Button>*/}
+        <Radio.Button value={Tabs.Categories}>Категории</Radio.Button>
       </Radio.Group>
       {children}
     </div>

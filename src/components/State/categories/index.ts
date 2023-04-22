@@ -4,17 +4,18 @@ import { recoilPersist } from 'recoil-persist'
 const { persistAtom } = recoilPersist()
 
 type Category = {
+  id: string
   name: string
   value: string
 }
 export const CategoriesState = atom<Category[]>({
   key: 'categories',
   default: [
-    { name: 'Продукты', value: 'products' },
-    { name: 'Здоровье', value: 'health' },
-    { name: 'Товары для дома', value: 'home' },
-    { name: 'Спорт', value: 'sport' },
-    { name: 'Другое', value: 'other' },
+    { id: '1', name: 'Продукты', value: 'products' },
+    { id: '2', name: 'Здоровье', value: 'health' },
+    { id: '3', name: 'Товары для дома', value: 'home' },
+    { id: '4', name: 'Спорт', value: 'sport' },
+    { id: '5', name: 'Другое', value: 'other' },
   ],
   effects_UNSTABLE: [persistAtom],
 })

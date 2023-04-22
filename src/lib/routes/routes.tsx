@@ -4,6 +4,7 @@ import React, { FC, LazyExoticComponent, lazy, useEffect } from 'react'
 const NotFound = lazy(() => import('../../components/pages/NotFound'))
 const Dashboard = lazy(() => import('../../components/pages/Dashboard'))
 const Consumptions = lazy(() => import('../../components/pages/Consumptions'))
+const Categories = lazy(() => import('../../components/pages/Categories'))
 
 export type Routes = {
   /**
@@ -49,6 +50,13 @@ export const ROUTES: Routes[] = [
     title: 'Главная | Tinkoff',
     accessRules: { roles: [] },
     component: Consumptions,
+  },
+  {
+    id: 'categories',
+    path: '/categories',
+    title: 'Главная | Tinkoff',
+    accessRules: { roles: [] },
+    component: Categories,
   },
   {
     id: 'notFound',

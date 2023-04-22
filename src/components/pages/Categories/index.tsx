@@ -1,5 +1,6 @@
 import { AddCategory } from '../../organisms/AddCategory'
 import { AddConsumption } from '../../organisms/AddСonsumption'
+import { CategoriesState } from '../../State/categories'
 import { ConsumptionsState } from '../../State/сonsumptions'
 import { List } from 'antd'
 import { formatAmount } from '../../../lib/formatAmount'
@@ -9,22 +10,16 @@ import MainTemplate from '../../templates/MainTemplate'
 import React from 'react'
 
 const Consumptions = () => {
-  const consumptions = useRecoilValue(ConsumptionsState)
+  const consumptions = useRecoilValue(CategoriesState)
 
   return (
-    <MainTemplate title="Ваши траты">
+    <MainTemplate title="Катаегории трат">
       <List
         dataSource={consumptions}
         itemLayout="horizontal"
-        renderItem={(item, index) => (
-          <List.Item key={item.id}>
-            <List.Item.Meta description={item.category} title={item.name} />
-            <div>{formatAmount(+item.amount)}</div>
-            <div style={{ marginLeft: 8 }}>{formatDate(item.date)}</div>
-          </List.Item>
-        )}
+        renderItem={(item) => <List.Item key={item.id}>{item.name}</List.Item>}
       />
-      <AddConsumption />
+      <AddCategory />
     </MainTemplate>
   )
 }

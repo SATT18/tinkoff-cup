@@ -4,6 +4,7 @@ import { ConsumptionsState } from '../../State/сonsumptions'
 import { Dayjs } from 'dayjs'
 import { PlusOutlined } from '@ant-design/icons'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { v4 } from 'uuid'
 import React, { useState } from 'react'
 import css from './index.module.scss'
 
@@ -24,6 +25,7 @@ export const AddConsumption = () => {
     setConsumptionsState((prev) => [
       ...prev,
       {
+        id: v4(),
         name: values.name,
         category: values.category.value,
         amount: values.amount,
@@ -38,10 +40,9 @@ export const AddConsumption = () => {
       <Button
         className={css.addConsumptionBtn}
         onClick={() => setModalOpen(true)}
-        shape="circle"
         type="primary"
       >
-        <PlusOutlined />
+        <PlusOutlined /> Добавть расход
       </Button>
       <Modal
         footer={null}
@@ -81,14 +82,13 @@ export const AddConsumption = () => {
           </Form.Item>
           <Form.Item wrapperCol={{ offset, span: 16 }}>
             <Button
-              onClick={() => setModalOpen(false)}
+              htmlType="submit"
               style={{ marginRight: 16 }}
+              type="primary"
             >
-              Отмена
-            </Button>
-            <Button htmlType="submit" type="primary">
               Записать
             </Button>
+            <Button onClick={() => setModalOpen(false)}>Отмена</Button>
           </Form.Item>
         </Form>
       </Modal>

@@ -3,6 +3,7 @@ import { recoilPersist } from 'recoil-persist'
 const { persistAtom } = recoilPersist()
 
 type Consumption = {
+  id: string
   name: string
   amount: number
   category: string
