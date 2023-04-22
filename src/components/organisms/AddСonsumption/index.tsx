@@ -69,9 +69,9 @@ export const AddConsumption = () => {
                 (option?.label ?? '').includes(input)
               }
               filterSort={(optionA, optionB) =>
-                (optionA.label ?? '')
+                optionA.label
                   .toLowerCase()
-                  .localeCompare((optionB.label ?? '').toLowerCase())
+                  .localeCompare(optionB.label.toLowerCase())
               }
               options={categoriesOptions}
             />
