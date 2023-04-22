@@ -1,6 +1,8 @@
-import { selector } from 'recoil'
+import { atom, selector } from 'recoil'
 import { CategoriesState } from '../categories'
-import { ConsumptionsStateFiltered } from '../сonsumptions'
+import { ConsumptionsState, ConsumptionsStateFiltered } from '../сonsumptions'
+import { formatDate } from '../../../lib/formatDateToTimeDate'
+import dayjs from 'dayjs'
 
 export const DashboardState = selector({
   key: 'dashboard',
@@ -25,6 +27,39 @@ export const DashboardState = selector({
           data: spendByCategories,
           backgroundColor: categories.map((cat) => cat.color),
           borderWidth: 1,
+        },
+      ],
+    }
+  },
+})
+
+export const DashboardLineState = selector({
+  key: 'dashboardLine',
+  get: ({ get }) => {
+    const consumptions = get(ConsumptionsState)
+
+    const labels = []
+    for (let i = 6; i >= 0; i -= 1) {
+      labels.push(formatDate(dayjs().add(-i, 'day').toISOString()))
+    }
+
+    console.log('labels', labels)
+
+    const data = labels.map((date) =>
+      consumptions.reduce(
+        (acc, el) =>
+          date === formatDate(el.date) ? acc + Number(el.amount) : acc,
+        0
+      )
+    )
+
+    return {
+      labels,
+      datasets: [
+        {
+          fill: true,
+          label: 'По всем категориям',
+          data,
         },
       ],
     }
