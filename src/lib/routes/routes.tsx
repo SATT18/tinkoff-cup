@@ -1,16 +1,13 @@
 import { AccessRules } from '../auth'
-import { Navigate, useLocation } from 'react-router-dom'
+import { RouteObject } from 'react-router'
+import { useLocation } from 'react-router-dom'
 import Categories from '../../components/pages/Categories'
 import Consumptions from '../../components/pages/Consumptions'
 import Dashboard from '../../components/pages/Dashboard'
 import NotFound from '../../components/pages/NotFound'
-import React, { FC, LazyExoticComponent, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 export type Routes = {
-  /**
-   * Уникальный id
-   */
-  id: string
   /**
    * Заголовок страницы, указывается если элемент должен отображаться в меню
    */
@@ -23,47 +20,43 @@ export type Routes = {
    * Массив ролей необходимый для показа страницы
    */
   accessRules: AccessRules
-  /**
-   * Компонент страницы
-   */
-  component: LazyExoticComponent<FC> | FC
 }
 
-export const ROUTES: Routes[] = [
+export const ROUTES: Array<RouteObject & Routes> = [
   {
     id: 'init',
     path: '/',
     title: 'Главная | Tinkoff',
     accessRules: { roles: [] },
-    component: () => <Navigate to="/consumptions" />,
+    element: <Consumptions />,
   },
   {
     id: 'dashboard',
     path: '/dashboard',
     title: 'Главная | Tinkoff',
     accessRules: { roles: [] },
-    component: Dashboard,
+    element: <Dashboard />,
   },
   {
     id: 'consumptions',
     path: '/consumptions',
     title: 'Главная | Tinkoff',
     accessRules: { roles: [] },
-    component: Consumptions,
+    element: <Consumptions />,
   },
   {
     id: 'categories',
     path: '/categories',
     title: 'Главная | Tinkoff',
     accessRules: { roles: [] },
-    component: Categories,
+    element: <Categories />,
   },
   {
     id: 'notFound',
     title: 'Не найдено | Tinkoff',
     path: '*',
     accessRules: { roles: [] },
-    component: NotFound,
+    element: <NotFound />,
   },
 ]
 

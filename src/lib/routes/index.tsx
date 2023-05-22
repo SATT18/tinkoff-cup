@@ -1,5 +1,5 @@
 import { ROUTES, useTitle } from './routes'
-import { Route, Routes as RouterRoutes } from 'react-router-dom'
+import { useRoutes } from 'react-router-dom'
 import { useShowPermissions } from '../auth'
 import Loader from '../../components/atoms/Loader'
 import MainTemplate from '../../components/templates/MainTemplate'
@@ -10,19 +10,18 @@ export const Routes = () => {
   const { hasPrivileges, getRoutePrivileges } = useShowPermissions()
   useTitle()
 
-  const elem = useMemo(
+  const allowRoutes = useMemo(
     () =>
       ROUTES.map((item) => {
-        const Component = item.component
-
-        return hasPrivileges(getRoutePrivileges(item)) ? (
-          <Route key={item.id} element={<Component />} path={item.path} />
-        ) : (
-          <Route key={item.id} element={<NotAllowed />} path={item.path} />
-        )
+        if (!hasPrivileges(getRoutePrivileges(item))) {
+          item.element = <NotAllowed />
+        }
+        return item
       }),
+
     [getRoutePrivileges, hasPrivileges]
   )
+  const elem = useRoutes(allowRoutes)
 
   return (
     <Suspense
@@ -41,7 +40,7 @@ export const Routes = () => {
         </MainTemplate>
       }
     >
-      <RouterRoutes>{elem}</RouterRoutes>
+      {elem}
     </Suspense>
   )
 }
